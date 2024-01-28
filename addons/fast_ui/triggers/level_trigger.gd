@@ -5,8 +5,8 @@ extends FastUITrigger
 
 func trigger(instigator: Node) -> void:
 	if level:
-		if Engine.has_singleton("Transactions"):
-			var transactions: = Engine.get_singleton("Transactions")
+		var transactions: = instigator.get_tree().root.get_node_or_null("Transactions")
+		if transactions:
 			Transactions.swap_level(level)
 		else:
 			instigator.get_tree().change_scene_to_file(level)
