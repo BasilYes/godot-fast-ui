@@ -1,0 +1,2 @@
+class_name FastUIAnimationData
+extends Resource

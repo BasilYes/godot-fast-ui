@@ -1,0 +1,42 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Generated directories with binaries
+build
+bin
+
+# Addons binaries
+!/addons/**/bin
+
+# No vcs folders
+**-novcs*/
+
+# android build directory
+/android
+
+# Binaries
+*.o
+*.os
+*.so
+*.obj
+*.bc
+*.pyc
+*.dblite
+*.pdb
+*.lib
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.idb
+
+# Visual Studio 2017 and Visual Studio Code workspace folder
+/.vs
+/.vscode
+
+# Blender backups
+*.blend?*
+
+# Office tmp
+**.~*#
