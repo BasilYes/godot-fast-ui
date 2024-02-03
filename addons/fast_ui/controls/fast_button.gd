@@ -5,5 +5,6 @@ extends BaseButton
 func _ready() -> void:
 	pressed.connect(func():
 		for i in triggers:
-			await i.trigger(self)
+			if i:
+				await i.trigger(self)
 	)
