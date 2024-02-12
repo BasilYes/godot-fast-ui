@@ -32,23 +32,24 @@ func play_animation(animation: FastUIControlAnimationData) -> void:
 	if active_animation:
 		return
 	active_animation = animation
-	var abs_delay: float = animation.get_delay(self)
-	var abs_time: float = animation.get_time(self)
-	animation_progress = 0
-	_update_shift(0.0)
-	var tween: Tween
-	if abs_delay:
-		await get_tree().create_timer(abs_delay).timeout
-	tween = get_tree().create_tween()
-	tween.set_trans(animation.tween_transition_type)
-	tween.set_ease(animation.tween_ease_type)
-	tween.tween_method(
-		_update_shift,
-		0.0,
-		1.0,
-		abs_time
-	)
-	await tween.finished
+	await animation.play(self)
+	#var abs_delay: float = animation.get_delay(self)
+	#var abs_time: float = animation.get_time(self)
+	#animation_progress = 0
+	#_update_shift(0.0)
+	#var tween: Tween
+	#if abs_delay:
+		#await get_tree().create_timer(abs_delay).timeout
+	#tween = get_tree().create_tween()
+	#tween.set_trans(animation.tween_transition_type)
+	#tween.set_ease(animation.tween_ease_type)
+	#tween.tween_method(
+		#_update_shift,
+		#0.0,
+		#1.0,
+		#abs_time
+	#)
+	#await tween.finished
 	active_animation = null
 	animation_finished.emit()
 

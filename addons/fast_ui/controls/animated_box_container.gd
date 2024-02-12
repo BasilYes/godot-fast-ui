@@ -29,8 +29,8 @@ func play_animation_by_id(animation_id: int) -> void:
 func play_animation(animation: FastUIBoxAnimationData) -> void:
 	if not animation:
 		return
-	if active_animation:
-		return
+	while active_animation:
+		await animation_finished
 	set_process(true)
 	active_animation = animation
 	control_children_count = 0
@@ -43,6 +43,7 @@ func play_animation(animation: FastUIBoxAnimationData) -> void:
 	animation_progress.resize(control_children_count)
 	var tween: Tween
 	var counter: int = 0
+	var children: Array[Node] = get_children()
 	for i in get_children():
 		if i is Control and i.visible:
 			if counter:
@@ -73,13 +74,18 @@ func _notification(what: int) -> void:
 			if not active_animation:
 				return
 			var counter: int = 0
+			if active_animation.reverse_order:
+				counter = animation_progress.size() - 1
 			for i in get_children():
 				if i is Control and i.visible:
 					var rect: Rect2 = i.get_rect()
 					rect.position += active_animation.get_end_position(self) * animation_progress[counter]\
 							+ active_animation.get_start_position(self) * (1.0 - animation_progress[counter])
 					fit_child_in_rect(i, rect)
-					counter += 1
+					if active_animation.reverse_order:
+						counter -= 1
+					else:
+						counter += 1
 
 
 func _update_shift(new_shift: float, child_id: int) -> void:

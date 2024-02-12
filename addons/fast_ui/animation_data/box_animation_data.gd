@@ -4,6 +4,7 @@ extends FastUIControlAnimationData
 
 @export var sequential: bool = false
 @export var absolute_time: bool = true
+@export var reverse_order: bool = false
 
 
 func get_delay(instigator: Node) -> float:

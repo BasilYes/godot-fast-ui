@@ -19,6 +19,7 @@ func trigger(instigator: Node) -> void:
 			await player.animation_finished
 	else:
 		if player.has_method("play_animation_by_id"):
-			player.play_animation_by_id(animation_id)
-			if await_for_end and player.has_signal("animation_finished"):
-				await player.animation_finished
+			if await_for_end:
+				await player.play_animation_by_id(animation_id)
+			else:
+				player.play_animation_by_id(animation_id)
