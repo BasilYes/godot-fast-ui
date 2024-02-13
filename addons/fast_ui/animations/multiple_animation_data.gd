@@ -28,13 +28,13 @@ func play(instigator: Node) -> void:
 	var child_count: int = instigator.get_child_count()
 	var abs_delay: float = get_delay(instigator)
 	var abs_time: float = get_time(instigator)
-	print(abs_delay, "  ", abs_time)
 	var instigator_children: Array[Node] = instigator.get_children()
 	if _reverse_order:
 		instigator_children.reverse()
 	for i in instigator_children:
 		i.set_meta(PROGRESS_META, 0.0)
 		for p in _tracks:
+			p._start(i)
 			p._process(float(_reverse), i)
 	var tween: Tween
 	for i in instigator_children:
@@ -43,8 +43,6 @@ func play(instigator: Node) -> void:
 				await tween.finished
 			if abs_delay:
 				await instigator.get_tree().create_timer(abs_delay).timeout
-		for p in _tracks:
-			p._start(i)
 		i.set_meta("animation_reverse", _reverse)
 		tween = instigator.get_tree().create_tween()
 		tween.set_trans(_tween_transition_type)
@@ -64,11 +62,12 @@ func play(instigator: Node) -> void:
 				0.0,
 				1.0,
 				abs_time)
-		tween.finished.connect(func():
-				for p in _tracks:
-					p._end(i)
-				i.remove_meta("animation_reverse"))
 	await tween.finished
+	for i in instigator_children:
+		i.remove_meta(PROGRESS_META)
+		for p in _tracks:
+			p._end(i)
+			i.remove_meta("animation_reverse")
 
 
 func _update_tracks(progress: float, instigator: Node) -> void:

@@ -6,7 +6,7 @@ func _enter_tree() -> void:
 	add_custom_type(
 		"AnimatedControl"
 		,"Control",
-		preload("res://addons/fast_ui/animation_data/single_animation_data.gd"),
+		preload("res://addons/fast_ui/controls/animated_node.gd"),
 		null)
 
 

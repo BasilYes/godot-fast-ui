@@ -1,4 +1,4 @@
-class_name FastUIAnimatedPropertyData
+class_name FastUITrack
 extends Resource
 
 

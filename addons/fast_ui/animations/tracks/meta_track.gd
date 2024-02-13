@@ -1,10 +1,10 @@
 class_name FastUIMetaTrack
-extends FastUIAnimatedPropertyData
+extends FastUITrack
 
 @export var _name: String
 @export var _values: Dictionary = {
-	"start": 0,
-	"end": 0,
+	"start": 0.0,
+	"end": 0.0,
 }
 @export var _clean_on_end: bool = true
 

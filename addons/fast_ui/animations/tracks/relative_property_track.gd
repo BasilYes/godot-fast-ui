@@ -1,5 +1,5 @@
 class_name FastUIRelativePropertyTrack
-extends FastUIAnimatedPropertyData
+extends FastUITrack
 
 @export var _name: String
 @export var _values: Dictionary = {

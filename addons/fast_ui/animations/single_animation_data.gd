@@ -1,4 +1,3 @@
-@tool
 class_name FastUISingleAnimationData
 extends FastUIAnimationData
 
@@ -9,7 +8,7 @@ enum LoopType {
 	PING_PONG
 }
 
-@export var _tracks: Array[FastUIAnimatedPropertyData]
+@export var _tracks: Array[FastUITrack]
 @export var _time: float = 1.0
 @export var _reverse: bool = false
 @export var _tween_transition_type: Tween.TransitionType = Tween.TRANS_LINEAR
@@ -17,20 +16,10 @@ enum LoopType {
 @export var _loop: LoopType = LoopType.NO_LOOP
 
 
-func _init() -> void:
-	if not Engine.is_editor_hint() or _tracks:
-		return
-	_tracks = [
-		FastUIRelativePropertyTrack.new()
-	]
-	_tracks[0]._name = "position"
-	_tracks[0]._values = {
-		"delta": Vector2.ZERO
-	}
-
 func play(instigator: Node) -> void:
 	for i in _tracks:
 		i._start(instigator)
+		i._process(float(_reverse), instigator)
 	instigator.set_meta("animation_reverse", _reverse)
 	var tween: Tween
 	tween = instigator.get_tree().create_tween()

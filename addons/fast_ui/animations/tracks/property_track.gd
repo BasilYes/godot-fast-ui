@@ -1,11 +1,11 @@
-class_name FastUIGenericAnimatedPropertyData
-extends FastUIAnimatedPropertyData
+class_name FastUIPropertyTrack
+extends FastUITrack
 
 
 @export var _name: String
 @export var _values: Dictionary = {
-	"start": 0,
-	"end": 0
+	"start": 0.0,
+	"end": 0.0
 }
 
 func _process(progress: float, instigator: Node) -> void:
