@@ -4,7 +4,7 @@ extends FastUITrigger
 @export_node_path(
 	"AnimationPlayer",
 	"FastUIAnimatedBoxContainer",
-	"FastUIAnimatedControl",
+	"FastUIAnimatedNode",
 ) var animation_player: NodePath
 @export var animation_id: int = -1
 @export var animation_name: String = ""
