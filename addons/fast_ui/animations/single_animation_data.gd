@@ -10,11 +10,11 @@ enum LoopType {
 
 @export var _tracks: Array[FastUITrack]
 @export var _time: float = 1.0
-@export var _reverse: bool = false
 @export var _tween_transition_type: Tween.TransitionType = Tween.TRANS_LINEAR
 @export var _tween_ease_type: Tween.EaseType = Tween.EASE_IN
 @export var _loop: LoopType = LoopType.NO_LOOP
 
+var _reverse: bool = false
 
 func play(instigator: Node) -> void:
 	for i in _tracks:
