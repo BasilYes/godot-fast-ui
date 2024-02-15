@@ -6,7 +6,6 @@ extends FastUITrigger
 
 func init(owner: Node) -> void:
 	owner.connect(_signal_name, func(arg1 = null, arg2 = null, arg3 = null, arg4 = null, arg5 = null):
-		print_debug("wait for vararg implemened to godot")
 		if _target_from_signal:
 			var args = []
 			for argument in [arg1, arg2, arg3, arg4, arg5]:
