@@ -1,4 +1,3 @@
-@tool
 class_name FastUIBoxAnimationData
 extends FastUISingleAnimationData
 
@@ -11,18 +10,6 @@ extends FastUISingleAnimationData
 @export var _reverse_order: bool = false
 
 const PROGRESS_META: String = "animation_progress"
-
-func _init() -> void:
-	if not Engine.is_editor_hint() or _tracks:
-		return
-	_tracks = [
-		FastUIMetaTrack.new()
-	]
-	_tracks[0]._name = "delta_position"
-	_tracks[0]._values = {
-		"start": Vector2.ZERO,
-		"end": Vector2.ZERO
-	}
 
 func play(instigator: Node) -> void:
 	var child_count: int = instigator.get_child_count()
@@ -43,8 +30,10 @@ func play(instigator: Node) -> void:
 				await tween.finished
 			if abs_delay:
 				await instigator.get_tree().create_timer(abs_delay).timeout
+		if not i:
+			continue
 		i.set_meta("animation_reverse", _reverse)
-		tween = instigator.get_tree().create_tween()
+		tween = i.create_tween()
 		tween.set_trans(_tween_transition_type)
 		tween.set_ease(_tween_ease_type)
 		match _loop:

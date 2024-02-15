@@ -1,5 +1,5 @@
-class_name FastUIExitTrigger
-extends FastUITrigger
+class_name FastUIExitEvent
+extends FastUIEvent
 
 
 func trigger(instigator: Node) -> void:

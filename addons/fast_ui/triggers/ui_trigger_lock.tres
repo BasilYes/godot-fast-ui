@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="FastUITriggerLock" load_steps=2 format=3 uid="uid://lm8rye77anwj"]
+
+[ext_resource type="Script" path="res://addons/fast_ui/triggers/trigger_lock.gd" id="1_885wx"]
+
+[resource]
+script = ExtResource("1_885wx")
+locked = false

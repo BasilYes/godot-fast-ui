@@ -1,5 +1,5 @@
-class_name FastUIDelayTrigger
-extends FastUITrigger
+class_name FastUIDelayEvent
+extends FastUIEvent
 
 @export var time: float = 1.0
 

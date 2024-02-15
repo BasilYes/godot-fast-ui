@@ -22,7 +22,7 @@ func play(instigator: Node) -> void:
 		i._process(float(_reverse), instigator)
 	instigator.set_meta("animation_reverse", _reverse)
 	var tween: Tween
-	tween = instigator.get_tree().create_tween()
+	tween = instigator.create_tween()
 	tween.set_trans(_tween_transition_type)
 	tween.set_ease(_tween_ease_type)
 	match _loop:

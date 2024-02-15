@@ -1,5 +1,5 @@
-class_name FastUIAdTrigger
-extends FastUITrigger
+class_name FastUIAdEvent
+extends FastUIEvent
 
 @export_enum(
 	"interstitial:0",

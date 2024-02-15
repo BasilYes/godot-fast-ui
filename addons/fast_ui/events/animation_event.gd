@@ -1,5 +1,5 @@
-class_name FastUIAnimationTrigger
-extends FastUITrigger
+class_name FastUIAnimationEvent
+extends FastUIEvent
 
 @export_node_path(
 	"AnimationPlayer",

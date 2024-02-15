@@ -1,5 +1,5 @@
-class_name FastUIEnableControlTrigger
-extends FastUITrigger
+class_name FastUIEnableControlEvent
+extends FastUIEvent
 
 @export_node_path("Control") var node: NodePath
 @export var enable: bool

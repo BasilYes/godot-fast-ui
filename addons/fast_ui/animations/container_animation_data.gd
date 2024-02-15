@@ -1,5 +1,5 @@
 @tool
-class_name FastUIControlAnimationData
+class_name FastUIContainerAnimationData
 extends FastUISingleAnimationData
 
 

@@ -1,5 +1,5 @@
-class_name FastUILevelTrigger
-extends FastUITrigger
+class_name FastUILevelEvent
+extends FastUIEvent
 
 @export_file("*.tscn") var level: String = ""
 
