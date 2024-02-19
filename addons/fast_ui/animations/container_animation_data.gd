@@ -1,18 +1,19 @@
 @tool
 class_name FastUIContainerAnimationData
-extends FastUISingleAnimationData
+extends FastUIMultipleAnimationData
 
 
 func _init() -> void:
 	if not Engine.is_editor_hint() or _tracks:
 		return
 	_tracks = [
-		FastUIRelativePropertyTrack.new(),
+		FastUIMetaTrack.new(),
 		FastUIPropertyTrack.new()
 	]
-	_tracks[0]._name = "position"
+	_tracks[0]._name = "delta_position"
 	_tracks[0]._values = {
-		"delta": Vector2.ZERO
+		"start": Vector2.ZERO,
+		"end": Vector2.ZERO
 	}
 	_tracks[1]._name = "modulate"
 	_tracks[1]._values = {

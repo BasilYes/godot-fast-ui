@@ -1,10 +1,10 @@
-class_name FastUIAnimatedBoxContainer
+class_name FastUIAnimatedContainer
 extends Container
 
 signal animation_finished
 
 @export var play_on_start: int = -1
-@export var animations: Array[FastUIBoxAnimationData] = []
+@export var animations: Array[FastUIMultipleAnimationData] = []
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func play_animation_by_id(animation_id: int) -> void:
 	await play_animation(animations[animation_id])
 
 
-func play_animation(animation: FastUIBoxAnimationData) -> void:
+func play_animation(animation: FastUIMultipleAnimationData) -> void:
 	if not animation:
 		return
 	set_process(true)

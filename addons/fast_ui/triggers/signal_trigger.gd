@@ -12,4 +12,6 @@ func init(owner: Node) -> void:
 				if argument is Node:
 					_execute(argument)
 					return
+			_execute(null)
+			return
 		_execute(owner))

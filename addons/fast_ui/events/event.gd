@@ -1,5 +1,5 @@
 class_name FastUIEvent
 extends Resource
 
-func trigger(instigator: Node) -> void:
+func trigger(target: Node) -> void:
 	pass

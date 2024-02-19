@@ -7,8 +7,10 @@ extends FastUIEvent
 ) var type: int = 0
 
 func trigger(instigator: Node) -> void:
-	match type:
-		0:
-			YandexAds.showInterstitialAd()
-		1:
-			YandexAds.showRewardedAd()
+	var ads: = instigator.get_tree().root.get_node_or_null("YandexAds")
+	if ads:
+		match type:
+			0:
+				ads.showInterstitialAd()
+			1:
+				ads.showRewardedAd()

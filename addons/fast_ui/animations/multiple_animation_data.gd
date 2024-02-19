@@ -1,4 +1,4 @@
-class_name FastUIBoxAnimationData
+class_name FastUIMultipleAnimationData
 extends FastUISingleAnimationData
 
 
