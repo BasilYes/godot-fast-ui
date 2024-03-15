@@ -35,7 +35,9 @@ func play_animation(animation: FastUIMultipleAnimationData) -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
 		for i in get_children():
-			if i is Control and i.visible and i.has_meta("delta_position"):
-				var rect: Rect2 = i.get_rect()
-				rect.position += i.get_meta("delta_position")
-				fit_child_in_rect(i, rect)
+			if i is Control and i.visible:
+				if i.has_meta("delta_scale"):
+					i.pivot_offset = i.size / 2.0
+					i.scale = i.get_meta("delta_scale") * Vector2.ONE
+				if i.has_meta("delta_position"):
+					i.position += i.get_meta("delta_position")
