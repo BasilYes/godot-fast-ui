@@ -3,7 +3,7 @@ extends FastUISingleAnimationData
 
 
 # TODO
-@export var in_viewports: bool = false
+#@export var in_viewports: bool = false
 
 @export var _delay: float = 0.4
 @export var sequential: bool = false
