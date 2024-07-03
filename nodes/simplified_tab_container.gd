@@ -10,6 +10,8 @@ extends Container
 		current_tab = value
 		_update_children_visibility()
 
+var updating_visibility: bool = false
+
 
 func _ready() -> void:
 	for i in get_children():
@@ -30,6 +32,7 @@ func _notification(what: int) -> void:
 
 
 func _update_children_visibility() -> void:
+	updating_visibility = true
 	for i in get_child_count():
 		var child: Node = get_child(i)
 		if child is Control:
@@ -39,10 +42,12 @@ func _update_children_visibility() -> void:
 			else:
 				if child.visible:
 					child.visible = false
+	updating_visibility = false
 
 
 func _child_visibility_changed() -> void:
-	print("child visible changed")
+	if visibility_changed:
+		return
 	var unlegal_visible: int = current_tab
 	for i in get_child_count():
 		var child: Node = get_child(i)
