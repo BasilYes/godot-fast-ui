@@ -37,11 +37,9 @@ func _update_children_visibility() -> void:
 		var child: Node = get_child(i)
 		if child is Control:
 			if i == current_tab:
-				if not child.visible:
-					child.visible = true
+				child.visible = true
 			else:
-				if child.visible:
-					child.visible = false
+				child.visible = false
 	updating_visibility = false
 
 
