@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="FastUITriggerLock" load_steps=2 format=3 uid="uid://lm8rye77anwj"]
-
-[ext_resource type="Script" path="res://addons/godot-fast-ui/triggers/trigger_lock.gd" id="1_6083n"]
-
-[resource]
-script = ExtResource("1_6083n")
-locked = false
