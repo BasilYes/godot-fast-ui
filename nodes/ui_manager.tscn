@@ -6,6 +6,7 @@
 script = ExtResource("1_wsmln")
 
 [node name="Active" type="CanvasLayer" parent="."]
+layer = 16
 
 [node name="Pool" type="CanvasLayer" parent="."]
 process_mode = 4
