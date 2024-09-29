@@ -1,5 +1,5 @@
 @tool
-class_name FUIUIComponent
+class_name FUIComponent
 extends Node
 
 enum Action {
@@ -26,10 +26,10 @@ var all_layers: bool = false
 var all_visible: bool = false
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
 	if not instigator:
 		instigator = get_parent()
+	if Engine.is_editor_hint():
+		return
 	if not instigator.has_signal(signal_name):
 		return
 	match action:
