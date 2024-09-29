@@ -17,8 +17,7 @@ enum Action {
 var path: String = "" :
 	set(value):
 		path = value
-		if not key:
-			key = path.get_file().get_basename()
+		key = path.get_file().get_basename()
 var key: String = ""
 var on_top: bool = false
 var reversable: bool = false
