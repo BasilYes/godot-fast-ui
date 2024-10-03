@@ -33,20 +33,19 @@ func _ready() -> void:
 		return
 	match action:
 		Action.OPEN_SCREEN:
-			instigator.connect(signal_name,
-					FUIManager.open_screen.bind(
-						key, path, on_top, reversable
-			))
+			instigator.connect(signal_name, func() -> void:
+					FUIManager.open_screen(
+						key, path, on_top, reversable)
+			)
 		Action.CLOSE_SCREEN:
-			instigator.connect(signal_name,
-					FUIManager.close_screen.bind(
-						key, reversable, all_visible
-			))
+			instigator.connect(signal_name, func() -> void:
+					FUIManager.close_screen(
+						key, reversable, all_visible)
+			)
 		Action.PREVIOUS_SCREEN:
-			instigator.connect(signal_name,
-					FUIManager.previous_screen.bind(
-						all_layers
-			))
+			instigator.connect(signal_name, func() -> void:
+					FUIManager.previous_screen(all_layers)
+			)
 
 
 func _get_property_list() -> Array[Dictionary]:
