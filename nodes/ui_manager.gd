@@ -49,7 +49,12 @@ func open_screen(
 		return screen
 	if not path:
 		return screen
-	screen = load(path).instantiate()
+	var scene: PackedScene = load(path)
+	if scene:
+		screen = load(path).instantiate()
+	else:
+		push_warning("Scene path is not valid ", path)
+		return null
 	if key:
 		screen.name = key
 	active.add_child(screen)
