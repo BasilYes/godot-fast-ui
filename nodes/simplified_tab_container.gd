@@ -2,6 +2,8 @@
 class_name FastUISimplifiedTabContainer
 extends Container
 
+signal tab_changed(tab: int)
+
 @export var current_tab: int = 0 :
 	set(value):
 		value = max(min(get_child_count() - 1, value), 0)
@@ -9,6 +11,7 @@ extends Container
 			return
 		current_tab = value
 		_update_children_visibility()
+		tab_changed.emit(value)
 
 var updating_visibility: bool = false
 
