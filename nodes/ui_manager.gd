@@ -7,7 +7,7 @@ var log: Array = []
 
 
 func _ready() -> void:
-	if "--server" in OS.get_cmdline_args():
+	if "--headless" in OS.get_cmdline_args():
 		queue_free()
 		return
 	var path: String = ProjectSettings.get_setting(
