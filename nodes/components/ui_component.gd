@@ -25,6 +25,9 @@ var all_layers: bool = false
 var all_visible: bool = false
 
 func _ready() -> void:
+	if not FUIManager:
+		queue_free()
+		return
 	if not instigator:
 		instigator = get_parent()
 	if Engine.is_editor_hint():

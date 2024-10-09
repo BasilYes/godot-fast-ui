@@ -7,7 +7,7 @@ var log: Array = []
 
 
 func _ready() -> void:
-	if "--headless" in OS.get_cmdline_args():
+	if DisplayServer.get_name() == "headless":
 		queue_free()
 		return
 	var path: String = ProjectSettings.get_setting(
@@ -20,9 +20,7 @@ func _ready() -> void:
 		return
 	if not key:
 		key = "InitialScreen"
-	var screen: Control = load(path).instantiate()
-	screen.name = key
-	active.add_child(screen)
+	open_screen(key, path)
 
 
 func open_screen(
