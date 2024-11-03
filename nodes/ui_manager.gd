@@ -11,10 +11,10 @@ func _ready() -> void:
 		queue_free()
 		return
 	var path: String = ProjectSettings.get_setting(
-			FUIEditorPlugin.INITIAL_PATH_SETTING, ""
+			FUIConsts.INITIAL_PATH_SETTING, ""
 	)
 	var key: String = ProjectSettings.get_setting(
-			FUIEditorPlugin.INITIAL_KEY_SETTING, ""
+			FUIConsts.INITIAL_KEY_SETTING, ""
 	)
 	if not path:
 		return
