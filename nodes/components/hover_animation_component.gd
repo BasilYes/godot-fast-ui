@@ -1,6 +1,6 @@
 @tool
 class_name FastUIHoverAnimationComponent
-extends FastUIAnimationComponent
+extends FUIAnimationComponent
 
 var is_hovered: bool = false
 

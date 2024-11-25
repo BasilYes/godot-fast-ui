@@ -1,6 +1,6 @@
 @tool
 class_name FastUIPressAnimationComponent
-extends FastUIAnimationComponent
+extends FUIAnimationComponent
 
 var is_pressed: bool = false
 

@@ -1,5 +1,5 @@
 @tool
-class_name FastUISimplifiedTabContainer
+class_name FUISimplifiedTabContainer
 extends Container
 
 signal tab_changed(tab: int)

@@ -1,5 +1,5 @@
 @tool
-class_name FastUIAnimationComponent
+class_name FUIAnimationComponent
 extends Node
 
 enum Anchers {
