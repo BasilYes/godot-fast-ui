@@ -12,3 +12,5 @@ layer = 16
 process_mode = 4
 layer = -100
 visible = false
+
+[node name="Sounds" type="Node" parent="."]

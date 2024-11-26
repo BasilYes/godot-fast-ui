@@ -2,9 +2,10 @@ extends Node
 
 @onready var active: CanvasLayer = $Active
 @onready var pool: CanvasLayer = $Pool
+@onready var sounds: Node = $Sounds
 
 var log: Array = []
-
+var sound_bus: String = "Sound"
 
 func _ready() -> void:
 	if DisplayServer.get_name() == "headless":
@@ -16,11 +17,36 @@ func _ready() -> void:
 	var key: String = ProjectSettings.get_setting(
 			FUIConsts.INITIAL_KEY_SETTING, ""
 	)
+	sound_bus = ProjectSettings.get_setting(FUIConsts.UI_AUDIO_BUS_NAME, "Sound")
 	if not path:
 		return
 	if not key:
 		key = "InitialScreen"
 	open_screen(key, path)
+
+
+func play_sound(
+		key: String = "",
+		audio_stream: AudioStream = null,
+		volume_db: float = 0.0,
+		max_polyphony: int = 1,
+) -> AudioStreamPlayer:
+	var sound: AudioStreamPlayer = null
+	if key:
+		sound = sounds.get_node_or_null(key)
+	if not sound:
+		sound = AudioStreamPlayer.new()
+		sound.volume_db = volume_db
+		sound.bus = sound_bus
+		sound.stream = audio_stream
+		sound.max_polyphony = max_polyphony
+		sounds.add_child(sound)
+	if not key:
+		sound.finished.connect(sound.queue_free)
+	else:
+		sound.name = key
+	sound.play()
+	return sound
 
 
 func open_screen(

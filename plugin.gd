@@ -4,16 +4,6 @@ extends EditorPlugin
 
 
 func _enter_tree() -> void:
-	# if not ProjectSettings.has_setting(SCREENS_SETTING):
-	# 	ProjectSettings.set_setting(SCREENS_SETTING, [])
-	# ProjectSettings.set_initial_value(SCREENS_SETTING, [])
-	# ProjectSettings.set_as_basic(SCREENS_SETTING, true)
-	# ProjectSettings.add_property_info({
-	# 		"name": SCREENS_SETTING,
-	# 		"type": TYPE_ARRAY,
-	# 		"hint": PROPERTY_HINT_TYPE_STRING,
-	# 		"hint_string": "%d/%d:*.tscn,*.scn" % [TYPE_STRING, PROPERTY_HINT_FILE]
-	# })
 	if not ProjectSettings.has_setting(FUIConsts.INITIAL_PATH_SETTING):
 		ProjectSettings.set_setting(FUIConsts.INITIAL_PATH_SETTING, "")
 	ProjectSettings.set_initial_value(FUIConsts.INITIAL_PATH_SETTING, "")
@@ -30,6 +20,14 @@ func _enter_tree() -> void:
 	ProjectSettings.set_as_basic(FUIConsts.INITIAL_KEY_SETTING, true)
 	ProjectSettings.add_property_info({
 			"name": FUIConsts.INITIAL_KEY_SETTING,
+			"type": TYPE_STRING,
+	})
+	if not ProjectSettings.has_setting(FUIConsts.UI_AUDIO_BUS_NAME):
+		ProjectSettings.set_setting(FUIConsts.UI_AUDIO_BUS_NAME, "Sounds")
+	ProjectSettings.set_initial_value(FUIConsts.UI_AUDIO_BUS_NAME, "Sounds")
+	ProjectSettings.set_as_basic(FUIConsts.UI_AUDIO_BUS_NAME, true)
+	ProjectSettings.add_property_info({
+			"name": FUIConsts.UI_AUDIO_BUS_NAME,
 			"type": TYPE_STRING,
 	})
 	if not ProjectSettings.has_setting(FUIConsts.LASY_LOAD_SETTING):
