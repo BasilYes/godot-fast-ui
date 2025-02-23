@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dycj8p2i2xo3x"]
 
-[ext_resource type="Script" path="res://addons/godot-fast-ui/nodes/ui_manager.gd" id="1_wsmln"]
+[ext_resource type="Script" uid="uid://8f1ot5l77uer" path="res://addons/godot-fast-ui/nodes/ui_manager.gd" id="1_wsmln"]
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_wsmln")
