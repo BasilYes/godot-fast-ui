@@ -14,13 +14,33 @@ enum Anchers {
 	BOTTOM_RIGHT
 }
 
-@export var value_name: String = "scale"
-@export var value_type: Variant.Type = Variant.Type.TYPE_VECTOR2 :
+const ALLOWED_TYPES: = [
+	Variant.Type.TYPE_FLOAT,
+	Variant.Type.TYPE_VECTOR2,
+	Variant.Type.TYPE_VECTOR3,
+	Variant.Type.TYPE_VECTOR4,
+	Variant.Type.TYPE_RECT2,
+	Variant.Type.TYPE_TRANSFORM2D,
+	Variant.Type.TYPE_PLANE,
+	Variant.Type.TYPE_QUATERNION,
+	Variant.Type.TYPE_AABB,
+	Variant.Type.TYPE_BASIS,
+	Variant.Type.TYPE_TRANSFORM3D,
+	Variant.Type.TYPE_PROJECTION,
+	Variant.Type.TYPE_COLOR
+]
+
+var value_name: String = "scale" :
+	set(value):
+		value_name = value
+		if get_parent() and value_name in get_parent():
+			value_type = typeof(get_parent().get(value_name))
+var value_type: Variant.Type = Variant.Type.TYPE_VECTOR2 :
 	set(value):
 		value_type = value
 		notify_property_list_changed()
+var anchor: Anchers = Anchers.CENTER
 @export var duration: float = 0.2
-@export var anchor: Anchers = Anchers.CENTER
 @export var transition_type: Tween.TransitionType = Tween.TRANS_LINEAR
 @export var ease_type: Tween.EaseType = Tween.EASE_IN
 
@@ -31,18 +51,52 @@ var default_value: Variant
 var tween: Tween
 
 func _get_property_list() -> Array[Dictionary]:
-	return [
-		{
-			"name": "value",
-			"type": value_type,
+	var out: Array[Dictionary] = []
+	if get_parent() is Control:
+		out.append({
+			"name": "anchor",
+			"type": Variant.Type.TYPE_INT,
+			"hint": PROPERTY_HINT_ENUM,
+			"hint_string": Anchers.keys().reduce(func(a: Variant, b: Variant) -> String:
+				return a + "," + b),
 			"usage": PROPERTY_USAGE_DEFAULT
-		}
-	]
+		})
+	out.append({
+		"name": "value_name",
+		"type": Variant.Type.TYPE_STRING_NAME,
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": get_parent().get_property_list().reduce(func(a: Variant, b: Variant) -> String:
+			if b.type not in ALLOWED_TYPES or not (b.usage & PROPERTY_USAGE_EDITOR):
+				b = ""
+			else:
+				b = b.name
+			if a is Dictionary:
+				if a.type not in ALLOWED_TYPES or not (a.usage & PROPERTY_USAGE_EDITOR):
+					a = ""
+				else:
+					a = a.name
+			if a == "":
+				if b == "":
+					return ""
+				return b
+			else:
+				if b == "":
+					return a
+				return a + "," + b
+			return ""),
+		"usage": PROPERTY_USAGE_DEFAULT
+	})
+	out.append({
+		"name": "value",
+		"type": value_type,
+		"usage": PROPERTY_USAGE_DEFAULT
+	})
+	return out
 
 func _ready() -> void:
+	target = get_parent()
 	if Engine.is_editor_hint():
 		return
-	target = get_parent()
 	if value_name in target:
 		_setup.call_deferred()
 
