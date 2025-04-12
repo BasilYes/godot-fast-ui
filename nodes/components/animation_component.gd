@@ -46,7 +46,7 @@ var anchor: Anchers = Anchers.CENTER
 
 var value: Variant = Vector2(1.1, 1.1)
 
-var target: Control
+var target: Node
 var default_value: Variant
 var tween: Tween
 
