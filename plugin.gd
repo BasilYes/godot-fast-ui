@@ -22,22 +22,6 @@ func _enter_tree() -> void:
 			"name": FUIConsts.INITIAL_KEY_SETTING,
 			"type": TYPE_STRING,
 	})
-	if not ProjectSettings.has_setting(FUIConsts.UI_AUDIO_BUS_NAME):
-		ProjectSettings.set_setting(FUIConsts.UI_AUDIO_BUS_NAME, "Sounds")
-	ProjectSettings.set_initial_value(FUIConsts.UI_AUDIO_BUS_NAME, "Sounds")
-	ProjectSettings.set_as_basic(FUIConsts.UI_AUDIO_BUS_NAME, true)
-	ProjectSettings.add_property_info({
-			"name": FUIConsts.UI_AUDIO_BUS_NAME,
-			"type": TYPE_STRING,
-	})
-	if not ProjectSettings.has_setting(FUIConsts.LASY_LOAD_SETTING):
-		ProjectSettings.set_setting(FUIConsts.LASY_LOAD_SETTING, true)
-	ProjectSettings.set_initial_value(FUIConsts.LASY_LOAD_SETTING, true)
-	ProjectSettings.set_as_basic(FUIConsts.LASY_LOAD_SETTING, true)
-	ProjectSettings.add_property_info({
-			"name": FUIConsts.LASY_LOAD_SETTING,
-			"type": TYPE_BOOL,
-	})
 	add_autoload_singleton("FUIManager", "./nodes/ui_manager.tscn")
 
 
