@@ -19,11 +19,12 @@ func _ready() -> void:
 		return
 	if not key:
 		key = "InitialScreen"
-	open_screen(key, path)
+	open_screen(key, null, path)
 
 
 func open_screen(
 		key: String = "",
+		scene: PackedScene = null,
 		path: String = "",
 		on_top: bool = false,
 		reversable: bool = false
@@ -46,9 +47,10 @@ func open_screen(
 		return screen
 	if not path:
 		return screen
-	var scene: PackedScene = load(path)
+	if not scene:
+		scene = load(path)
 	if scene:
-		screen = load(path).instantiate()
+		screen = scene.instantiate()
 	else:
 		push_warning("Scene path is not valid ", path)
 		return null

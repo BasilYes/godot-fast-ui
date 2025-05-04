@@ -44,7 +44,8 @@ func _ready() -> void:
 		Action.OPEN_SCREEN:
 			instigator.connect(signal_name, func() -> void:
 					FUIManager.open_screen(
-						key, path, on_top, reversable)
+						# TODO: allow to preload scene
+						key, null, path, on_top, reversable)
 			)
 		Action.CLOSE_SCREEN:
 			instigator.connect(signal_name, func() -> void:
